@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Vietnam Weather",
+    "slug": "vietnam-weather",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "vietnamweather",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B1D3A"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.tduo1404pty1802.vietnamweather"
+    },
+    "android": {
+      "package": "com.tduo1404pty1802.vietnamweather",
+      "backgroundColor": "#0B1D3A",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "POST_NOTIFICATIONS"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-web-browser",
+      "expo-notifications",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Ứng dụng cần vị trí của bạn để hiện thời tiết chính xác."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

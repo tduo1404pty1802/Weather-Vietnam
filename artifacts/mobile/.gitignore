@@ -17,6 +17,8 @@ android/
 *.p8
 *.p12
 *.key
+*.keystore
+keystores/
 *.mobileprovision
 
 # Metro

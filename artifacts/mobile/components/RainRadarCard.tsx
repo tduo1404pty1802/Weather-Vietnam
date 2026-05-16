@@ -67,6 +67,8 @@ function NativeRadarMap({ city, tileUrl }: { city: City; tileUrl: string }) {
   );
 }
 
+const hasAndroidGoogleMapsApiKey = Boolean(process.env.EXPO_PUBLIC_ANDROID_GOOGLE_MAPS_API_KEY);
+
 export default function RainRadarCard({ city }: Props) {
   const { data } = useQuery({
     queryKey: ["rainviewer-radar"],
@@ -84,6 +86,7 @@ export default function RainRadarCard({ city }: Props) {
   const tileUrl = data?.host && latestFrame
     ? `${data.host}${latestFrame.path}/256/{z}/{x}/{y}/2/1_1.png`
     : null;
+  const canRenderNativeMap = Platform.OS === "ios" || (Platform.OS === "android" && hasAndroidGoogleMapsApiKey);
 
   return (
     <View style={styles.container}>
@@ -101,6 +104,14 @@ export default function RainRadarCard({ city }: Props) {
             <Feather name="map" size={28} color="rgba(255,255,255,0.45)" />
             <Text style={styles.fallbackTitle}>Radar hỗ trợ tốt nhất trên mobile</Text>
             <Text style={styles.fallbackText}>Mở bằng Android emulator hoặc Expo Go để xem lớp mưa động.</Text>
+          </View>
+        ) : !canRenderNativeMap ? (
+          <View style={styles.fallback}>
+            <Feather name="map-pin" size={28} color="rgba(255,255,255,0.45)" />
+            <Text style={styles.fallbackTitle}>Radar cần Google Maps API key</Text>
+            <Text style={styles.fallbackText}>
+              Đã tắt bản đồ native để APK không crash. Cập nhật cuối: {formatFrameTime(latestFrame?.time)}.
+            </Text>
           </View>
         ) : tileUrl ? (
           <>

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Vietnam Weather",
     "slug": "vietnam-weather",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "vietnamweather",
@@ -19,6 +19,7 @@
     },
     "android": {
       "package": "com.tduo1404pty1802.vietnamweather",
+      "versionCode": 2,
       "backgroundColor": "#0B1D3A",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
